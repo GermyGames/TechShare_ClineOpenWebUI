@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VibeCheck Pong</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="game-title">
+            <span class="vibe">VIBE</span><span class="check">CHECK</span>
+            <div class="subtitle">PONG</div>
+        </div>
+
+        <div class="menu" id="menu">
+            <button class="play-btn pulse" id="play-btn">PLAY</button>
+            <div class="difficulty">
+                <button class="diff-btn active" data-speed="5">CHILL</button>
+                <button class="diff-btn" data-speed="8">VIBE</button>
+                <button class="diff-btn" data-speed="12">INSANE</button>
+            </div>
+        </div>
+
+        <div class="score-container">
+            <div class="score" id="player-score">0</div>
+            <div class="score-divider"></div>
+            <div class="score" id="ai-score">0</div>
+            <div id="combo-display" class="combo-display"></div>
+        </div>
+
+        <canvas id="game" width="800" height="500"></canvas>
+
+        <div class="high-scores" id="high-scores">
+            <h3>HIGH SCORES</h3>
+            <ul id="high-scores-list">
+                <!-- High scores will be populated here -->
+            </ul>
+        </div>
+
+        <div class="controls-info">
+            <p>USE MOUSE OR TOUCHSCREEN TO MOVE</p>
+            <p>COLLECT POWER-UPS FOR SPECIAL ABILITIES!</p>
+        </div>
+    </div>
+    
+    <!-- Game Scripts -->
+    <script type="module" src="js/game.js"></script>
+</body>
+</html>
