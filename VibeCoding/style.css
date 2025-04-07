@@ -351,7 +351,7 @@ body {
     position: absolute;
     bottom: 220px;
     width: 300px;
-    height: 300px;
+    height: 400px;
     z-index: 102;
     transition: all 0.3s ease;
 }
@@ -359,51 +359,68 @@ body {
 /* Character styles */
 .char-left-paddle {
     left: 10%;
-    background: var(--neon-pink);
-    box-shadow: 0 0 15px var(--neon-pink);
-    clip-path: polygon(0% 0%, 20% 0%, 20% 100%, 0% 100%);
+    filter: drop-shadow(0 0 15px var(--neon-pink));
 }
 
 .char-right-paddle {
     right: 10%;
-    background: var(--neon-blue);
-    box-shadow: 0 0 15px var(--neon-blue);
-    clip-path: polygon(100% 0%, 80% 0%, 80% 100%, 100% 100%);
+    filter: drop-shadow(0 0 15px var(--neon-blue));
+    transform: scaleX(-1); /* Flip horizontally */
 }
 
 .char-ball-chan {
     left: 50%;
     transform: translateX(-50%);
-    background: var(--neon-green);
-    box-shadow: 0 0 15px var(--neon-green);
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
+    filter: none; /* Remove the green glow */
+    width: 200px;
+    height: 200px;
+    background-color: transparent !important;
+    border: none !important; /* Remove any borders */
+    box-shadow: none !important; /* Remove any box shadows */
 }
 
-/* Emotion styles - simple transformations for now */
-.emotion-determined { transform: skewX(-5deg); }
-.emotion-surprised { transform: scale(1.1); }
-.emotion-happy { transform: translateY(-10px); }
-.emotion-confident { transform: skewX(5deg); }
-.emotion-smirk { transform: rotate(3deg); }
-.emotion-tired { transform: translateY(5px); }
-.emotion-impressed { animation: pulse 1s infinite; }
-.emotion-jealous { transform: skewX(-10deg); }
-.emotion-serious { transform: scaleY(1.1); }
-.emotion-suspicious { transform: rotate(-3deg); }
-.emotion-vulnerable { transform: scale(0.95); }
-.emotion-shocked { transform: scale(1.2); }
-.emotion-excited { animation: bounce 0.5s infinite alternate; }
-.emotion-competitive { transform: skewY(5deg); }
-.emotion-heart-eyes::after {
+/* Emotion styles - effects for character images */
+.char-left-paddle.emotion-determined { transform: translateX(-5px) scale(1.05); }
+.char-left-paddle.emotion-surprised { transform: translateY(-10px) scale(1.1); }
+.char-left-paddle.emotion-happy { transform: translateY(-15px); }
+.char-left-paddle.emotion-shocked { transform: translateX(10px) scale(1.2); }
+.char-left-paddle.emotion-suspicious { transform: translateX(-10px) rotate(-3deg); }
+.char-left-paddle.emotion-tired { transform: translateY(5px) scale(0.95); }
+
+.char-right-paddle.emotion-confident { transform: scaleX(-1) translateX(-5px) scale(1.05); }
+.char-right-paddle.emotion-smirk { transform: scaleX(-1) rotate(-3deg); }
+.char-right-paddle.emotion-jealous { transform: scaleX(-1) translateX(-10px) skewX(5deg); }
+.char-right-paddle.emotion-serious { transform: scaleX(-1) scale(1.1); }
+.char-right-paddle.emotion-vulnerable { transform: scaleX(-1) translateY(5px) scale(0.95); }
+.char-right-paddle.emotion-competitive { transform: scaleX(-1) translateX(5px) scale(1.1); }
+
+.char-ball-chan.emotion-cheerful { transform: translateX(-50%) translateY(-10px) rotate(5deg); }
+.char-ball-chan.emotion-impressed { transform: translateX(-50%); }
+.char-ball-chan.emotion-impressed { animation: ballPulse 1s infinite; }
+.char-ball-chan.emotion-thoughtful { transform: translateX(-50%) rotate(-5deg); }
+.char-ball-chan.emotion-excited { transform: translateX(-50%); }
+.char-ball-chan.emotion-excited { animation: ballBounce 0.5s infinite alternate; }
+.char-ball-chan.emotion-heart-eyes { transform: translateX(-50%); }
+
+@keyframes ballPulse {
+    0% { transform: translateX(-50%) scale(1); }
+    50% { transform: translateX(-50%) scale(1.1); }
+    100% { transform: translateX(-50%) scale(1); }
+}
+
+@keyframes ballBounce {
+    from { transform: translateX(-50%) translateY(0); }
+    to { transform: translateX(-50%) translateY(-10px); }
+}
+.char-ball-chan.emotion-heart-eyes::after {
     content: "❤";
     position: absolute;
-    top: 30%;
+    top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 30px;
+    font-size: 40px;
     color: var(--neon-pink);
+    text-shadow: 0 0 10px var(--neon-pink);
 }
 
 @keyframes bounce {

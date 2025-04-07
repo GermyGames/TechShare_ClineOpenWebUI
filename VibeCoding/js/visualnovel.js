@@ -34,7 +34,7 @@ const story = [
             choices: null
         },
         {
-            background: 'radial-gradient(circle, #39ff14, #0a0a0a)',
+            background: 'radial-gradient(circle, #FFCBA4, #0a0a0a)',
             character: 'ball-chan',
             emotion: 'cheerful',
             text: "It's so exciting to have two skilled paddles in today's match! May the best paddle win~",
@@ -66,7 +66,7 @@ const story = [
             choices: null
         },
         {
-            background: 'radial-gradient(circle, #39ff14, #0a0a0a)',
+            background: 'radial-gradient(circle, #FFCBA4, #0a0a0a)',
             character: 'ball-chan',
             emotion: 'impressed',
             text: "Wow, you both played so well! Pink-sama, your reflexes are amazing!",
@@ -87,7 +87,7 @@ const story = [
             choices: null
         },
         {
-            background: 'radial-gradient(circle, #39ff14, #0a0a0a)',
+            background: 'radial-gradient(circle, #FFCBA4, #0a0a0a)',
             character: 'ball-chan',
             emotion: 'thoughtful',
             text: "You're both so attentive... It's hard to choose which technique I like better.",
@@ -133,7 +133,7 @@ const story = [
             choices: null
         },
         {
-            background: 'radial-gradient(circle, #39ff14, #0a0a0a)',
+            background: 'radial-gradient(circle, #FFCBA4, #0a0a0a)',
             character: 'ball-chan',
             emotion: 'excited',
             text: "This is getting interesting! The tension between you two is making my pixels flutter!",
@@ -157,7 +157,7 @@ const story = [
             choices: null
         },
         {
-            background: 'radial-gradient(circle, #39ff14, #0a0a0a)',
+            background: 'radial-gradient(circle, #FFCBA4, #0a0a0a)',
             character: 'ball-chan',
             emotion: 'heart-eyes',
             text: "May the best paddle win my heart! <3",
@@ -265,6 +265,20 @@ function displayScene(scene) {
         vnCharacter.style.display = 'block';
         vnCharacter.className = 'vn-character';
         vnCharacter.classList.add(`char-${scene.character}`);
+        
+        // Add image based on character
+        let imagePath = '';
+        switch(scene.character) {
+            case 'left-paddle': imagePath = 'vn_Player.png'; break;
+            case 'right-paddle': imagePath = 'vn_Rival.png'; break;
+            case 'ball-chan': imagePath = 'vn_ballChan.png'; break;
+        }
+        
+        // Set background image
+        vnCharacter.style.backgroundImage = `url('${imagePath}')`;
+        vnCharacter.style.backgroundSize = 'contain';
+        vnCharacter.style.backgroundPosition = 'center';
+        vnCharacter.style.backgroundRepeat = 'no-repeat';
         
         if (scene.emotion) {
             vnCharacter.classList.add(`emotion-${scene.emotion}`);
