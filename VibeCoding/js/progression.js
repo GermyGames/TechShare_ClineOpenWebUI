@@ -2,6 +2,7 @@
 // Handles levels, experience, high scores, and unlockables
 
 import * as Renderer from './renderer.js';
+import * as VisualNovel from './visualnovel.js';
 
 // Private module variables
 let state;
@@ -23,6 +24,10 @@ export function initProgression(gameState, gameSounds, gameCanvas) {
     sounds = gameSounds;
     canvas = gameCanvas;
     loadHighScores();
+    
+    // Initialize the visual novel module
+    const container = document.querySelector('.container');
+    VisualNovel.initVisualNovel(gameState, container);
 }
 
 // Update player progression
@@ -51,6 +56,11 @@ export function updateProgression(playerScore, comboMultiplier) {
         
         // Show level up message
         Renderer.showLevelUpMessage(playerLevel);
+        
+        // Start visual novel segment for the first 3 levels
+        if (playerLevel <= 3) {
+            VisualNovel.showVisualNovel(playerLevel);
+        }
     }
 }
 

@@ -5,6 +5,7 @@ import * as Renderer from './renderer.js';
 import * as PowerUps from './powerups.js';
 import * as ComboSystem from './combo.js';
 import * as Progression from './progression.js';
+import * as VisualNovel from './visualnovel.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     // Game elements
@@ -513,6 +514,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Update game state
     function update(deltaTime) {
         if (!gameRunning) return;
+        
+        // Skip game updates if visual novel is active
+        if (VisualNovel.isVisualNovelActive()) return;
         
         // Update each active ball
         state.balls.forEach(ball => {

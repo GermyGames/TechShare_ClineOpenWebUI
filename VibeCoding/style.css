@@ -323,6 +323,169 @@ body {
     color: var(--neon-green);
 }
 
+/* Visual Novel styles */
+.visual-novel-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    z-index: 100;
+    overflow: hidden;
+}
+
+.vn-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 101;
+    transition: background 0.5s ease;
+}
+
+.vn-character {
+    position: absolute;
+    bottom: 220px;
+    width: 300px;
+    height: 300px;
+    z-index: 102;
+    transition: all 0.3s ease;
+}
+
+/* Character styles */
+.char-left-paddle {
+    left: 10%;
+    background: var(--neon-pink);
+    box-shadow: 0 0 15px var(--neon-pink);
+    clip-path: polygon(0% 0%, 20% 0%, 20% 100%, 0% 100%);
+}
+
+.char-right-paddle {
+    right: 10%;
+    background: var(--neon-blue);
+    box-shadow: 0 0 15px var(--neon-blue);
+    clip-path: polygon(100% 0%, 80% 0%, 80% 100%, 100% 100%);
+}
+
+.char-ball-chan {
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--neon-green);
+    box-shadow: 0 0 15px var(--neon-green);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+/* Emotion styles - simple transformations for now */
+.emotion-determined { transform: skewX(-5deg); }
+.emotion-surprised { transform: scale(1.1); }
+.emotion-happy { transform: translateY(-10px); }
+.emotion-confident { transform: skewX(5deg); }
+.emotion-smirk { transform: rotate(3deg); }
+.emotion-tired { transform: translateY(5px); }
+.emotion-impressed { animation: pulse 1s infinite; }
+.emotion-jealous { transform: skewX(-10deg); }
+.emotion-serious { transform: scaleY(1.1); }
+.emotion-suspicious { transform: rotate(-3deg); }
+.emotion-vulnerable { transform: scale(0.95); }
+.emotion-shocked { transform: scale(1.2); }
+.emotion-excited { animation: bounce 0.5s infinite alternate; }
+.emotion-competitive { transform: skewY(5deg); }
+.emotion-heart-eyes::after {
+    content: "❤";
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    color: var(--neon-pink);
+}
+
+@keyframes bounce {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10px); }
+}
+
+.vn-dialog-box {
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 20px;
+    z-index: 103;
+    box-shadow: 0 0 20px rgba(157, 0, 255, 0.3);
+}
+
+.vn-char-name {
+    font-family: 'Orbitron', sans-serif;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+}
+
+.vn-text {
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    min-height: 80px;
+}
+
+.vn-choices {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.vn-choice-btn {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: 2px solid var(--neon-purple);
+    border-radius: 50px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.vn-choice-btn:hover {
+    background: var(--neon-purple);
+    box-shadow: 0 0 10px var(--neon-purple);
+}
+
+.vn-continue {
+    font-family: 'Montserrat', sans-serif;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    text-align: center;
+    cursor: pointer;
+}
+
+.vn-arrow {
+    animation: bounce-arrow 1s infinite;
+    display: inline-block;
+}
+
+@keyframes bounce-arrow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(5px); }
+}
+
 /* Responsiveness */
 @media (max-width: 850px) {
     #game {
